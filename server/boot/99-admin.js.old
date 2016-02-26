@@ -1,0 +1,39 @@
+module.exports = function(app, cb) {
+    console.log('admin.js');
+
+    var User = app.models.User;
+    var Role = app.models.Role;
+    var RoleMapping = app.models.RoleMapping;
+
+    function die(err) {
+        console.error(err);
+    }
+
+    function associaRuolo(user, role, cb) {
+        Role.findOne({where: {
+            name: role,
+        },}, function(err, role) {
+            role.principals.create({
+                principalType: RoleMapping.USER,
+                principalId: user.id,
+            }, function(err, principal) {
+                if (err) cb(err);
+                else {
+                    console.log('Utente ' + user.username + ' associato a ruolo ' + role.name);
+                    cb();
+                }
+            });
+        });
+    }
+
+    User.create(
+        {nome:'Paolo', cognome: 'Rossi', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'phra', email: 'asd@test.xxx', password: 'opensesame', ruolo:1},
+        function(err, user) {
+            if (err) return die(err);
+            console.log('CREATED USER: ', user);
+            associaRuolo(user, 'admin', function(err) {
+                if (err) return die(err);
+                cb();
+            });
+        });
+};

@@ -1,0 +1,19 @@
+{
+  "sql-file": true,
+  "dev": {
+    "driver": "sqlite3",
+    "filename": "~/dev.db"
+  },
+
+  "test": {
+    "driver": "sqlite3",
+    "filename": ":memory:"
+  },
+
+  "crowdfunding-test": "postgres:///crowdfunding-test",
+  "crowdfunding-phra": "postgres:///crowdfunding-phra",
+  "crodfunding-ale": "postgres:///crowdfunding-ale",
+  "crowdfunding-gabriele": "postgres:///crowdfunding-gabriele",
+  "crowdfunding-staging": "postgres:///crowdfunding-staging",
+  "crowdfunding": "postgres:///crowdfunding"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "MyPersistedModel",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "updated": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

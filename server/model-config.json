@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ]
+  },
+  "user": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "userIdentity": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "accessToken": {
+    "dataSource": "redisDS",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "postgres",
+    "public": false
+  },
+  "prodotto": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "Email",
+    "public": false
+  },
+  "fornitore": {
+    "dataSource": "postgres",
+    "public": true
+  },
+  "file": {
+    "dataSource": "fs",
+    "public": true
+  }
+}

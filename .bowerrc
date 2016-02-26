@@ -1,0 +1,7 @@
+{
+  "directory": "client/vendor",
+  "interactive": false,
+  "preinstall": "echo bower preinstall",
+  "postinstall": "echo bower postinstall",
+  "preuninstall": "echo bower preuninstall"
+}

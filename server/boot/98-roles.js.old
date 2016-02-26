@@ -1,0 +1,26 @@
+module.exports = function(app, cb) {
+    console.log('roles.js');
+    function die(err) {
+        console.error(err);
+    }
+
+    var Role = app.models.Role;
+    Role.create([
+        {
+            name: 'admin',
+        },
+        {
+            name: 'cliente',
+        },
+        {
+            name: 'fornitore',
+        },], function(err, roles) {
+            if (err) die(err);
+
+            for (var role in roles) {
+                console.log('CREATED ROLE: ', roles[role]);
+            }
+
+            cb();
+        });
+};

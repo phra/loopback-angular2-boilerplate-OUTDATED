@@ -1,0 +1,30 @@
+{
+  "restApiRoot": "/api",
+  "host": "ordinodacasa.it",
+  "port": 3000,
+  "legacyExplorer": false,
+  "remoting": {
+    "context": {
+      "enableHttpContext": false
+    },
+    "rest": {
+      "normalizeHttpPath": true,
+      "xml": false
+    },
+    "json": {
+      "strict": true,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": {
+      "origin": false,
+      "credentials": false
+    },
+    "errorHandler": {
+      "disableStackTrace": true
+    }
+  }
+}

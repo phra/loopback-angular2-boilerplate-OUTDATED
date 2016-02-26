@@ -1,0 +1,69 @@
+var loopback = require('loopback');
+
+module.exports = function(app, cb) {
+    console.log('cliente.js');
+
+    var User = app.models.User;
+    var Role = app.models.Role;
+    var Indirizzo = app.models.Indirizzo;
+    var RoleMapping = app.models.RoleMapping;
+
+    function die(err) {
+        console.error(err);
+    }
+
+    function associaRuolo(user, role, cb) {
+        Role.findOne({where: {
+            name: role,
+        },}, function(err, role) {
+            role.principals.create({
+                principalType: RoleMapping.USER,
+                principalId: user.id,
+            }, function(err, principal) {
+                if (err) cb(err);
+                else {
+                    console.log('Utente ' + user.username + ' associato a ruolo ' + role.name);
+                    cb();
+                }
+            });
+        });
+    }
+
+    function associaIndirizzo(indirizzo, cb) {
+        Indirizzo.create(indirizzo, function(err, indirizzo) {
+            if (err) cb(err);
+            else {
+                console.log('Utente associato ad indirizzo ', indirizzo);
+                cb();
+            }
+        });
+    }
+
+    User.create(
+        {nome: 'Mario', cognome: 'Bianchi', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'gabriele', email: 'cliente@test.xxx', password: 'opensesame', ruolo: 2},
+        function(err, user) {
+            if (err) return die(err);
+            console.log('CREATED USER: ', user);
+            associaRuolo(user, 'cliente', function(err) {
+                if (err) return die(err);
+                var indirizzo = {
+                    userId: user.id,
+                    via: 'Via Don Giovanni Minzoni',
+                    civico: '13',
+                    citta: 'Bologna',
+                    provincia: 'Bo',
+                    stato: 'Italia',
+                    geopoint: loopback.GeoPoint({lat: 44.5027981, lng: 11.337016199999994}),
+                    completo: 'Via Don Giovanni Minzoni, 13, Bologna, BO, Italia',
+                    campanello: 'Rossi Mario',
+                };
+
+                associaIndirizzo(indirizzo, function(err) {
+                    if (err) return die(err);
+                    console.log('chiamo cb fine cliente');
+                    cb();
+                    console.log('dopo cb');
+                });
+            });
+        });
+};

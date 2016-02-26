@@ -1,0 +1,206 @@
+var loopback = require('loopback');
+
+module.exports = function(app, cb) {
+
+    var User = app.models.User;
+    var Role = app.models.Role;
+    var Fornitore = app.models.Fornitore;
+    var RoleMapping = app.models.RoleMapping;
+    var Menu = app.models.Menu;
+    var Prodotto = app.models.Prodotto;
+
+    function die(err) {
+        console.error(err);
+    }
+
+    function associaRuolo(user, role, cb) {
+        Role.findOne({where: {
+            name: role,
+        },}, function(err, role) {
+            role.principals.create({
+                principalType: RoleMapping.USER,
+                principalId: user.id,
+            }, function(err, principal) {
+                if (err) cb(err);
+                else {
+                    console.log('Utente ' + user.username + ' associato a ruolo ' + role.name);
+                    cb();
+                }
+            });
+        });
+    }
+
+    function associaFornitore(indirizzo, cb) {
+        Fornitore.create(indirizzo, function(err, indirizzo) {
+            if (err) cb(err);
+            else {
+                console.log('Utente associato ad indirizzo ', indirizzo);
+                cb();
+            }
+        });
+    }
+
+    function creaOrari() {
+        var orari = [
+            [{ apertura: '0000', chiusura: '1300'}, { apertura: '1500', chiusura: '2359' }],
+            [{ apertura: '0000', chiusura: '1300'}, { apertura: '1500', chiusura: '2359' }],
+            [{ apertura: '0800', chiusura: '1300'}, { apertura: '1500', chiusura: '2000' }],
+            [{ apertura: '0000', chiusura: '1300'}, { apertura: '1500', chiusura: '2359' }],
+            [{ apertura: '0800', chiusura: '1300'}, { apertura: '1500', chiusura: '2000' }],
+            [{apertura: '0000', chiusura: '2300'},],
+            [{apertura: '0300', chiusura: '2300'},],
+        ];
+
+        return orari;
+    }
+
+    function creaOrariChiuso() {
+        var orari = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ];
+
+        return orari;
+    }
+
+    function itera(nome, array) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].nome === nome)
+                return array[i];
+        }
+    }
+
+    User.create(
+        [{nome: 'Antonio', cognome: 'Verdi', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'ale', email: 'alimentari@test.xxx', password: 'opensesame', ruolo: 3, fornitoreId: 1},
+            {nome: 'Giuseppe', cognome: 'Verdi', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'giuse', email: 'cibo@test.xxx', password: 'opensesame', ruolo: 3, fornitoreId: 2},
+            {nome: 'Mario', cognome: 'Rossi', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'giuse', email: 'alimentari1@test.xxx', password: 'opensesame', ruolo: 3, fornitoreId: 2},
+            {nome: 'Pasquale', cognome: 'Roma', telefono: '123-456789', created: new Date(), updated: new Date(), username: 'giuse', email: 'cib1o@test.xxx', password: 'opensesame', ruolo: 3, fornitoreId: 2},],
+            function(err, users) {
+                if (err) return die(err);
+                console.log('CREATED USERS: ', users);
+                associaRuolo(users[0], 'fornitore', function(err) {
+                    if (err) return die(err);
+
+                    var data = {
+                        userId: itera('Antonio', users).id,
+                        via: 'Via del Fico',
+                        telefono: '123-456789',
+                        civico: '2',
+                        citta: 'Bologna',
+                        provincia: 'Bo',
+                        stato: 'Italia',
+                        geopoint: loopback.GeoPoint({lat: 44.49712, lng: 11.34448}),
+                        completo: 'Via del Fico, 1, Bologna, BO, Italia',
+                        raggio: 2,
+                        piva: 'IT0123456789',
+                        orari: creaOrari(),
+                        nome: 'Alimentari da Ale Sasha',
+                        consegna: 1.50,
+                        gratis: 500,
+                        minimo: 5.50,
+                        tipo: 0,
+                        tz: 'Europe/Rome',
+                        lang: 'it-it',
+                    };
+
+                    associaFornitore(data, function(err) {
+                        if (err) return die(err);
+                        associaRuolo(users[1], 'fornitore', function(err) {
+                            if (err) return die(err);
+
+                            var data2 = {
+                                userId: itera('Giuseppe', users).id,
+                                via: 'Via del Fico',
+                                telefono: '123-456789',
+                                civico: '2',
+                                citta: 'Bologna',
+                                provincia: 'Bo',
+                                stato: 'Italia',
+                                geopoint: loopback.GeoPoint({lat: 44.49712, lng: 11.34448}),
+                                completo: 'Via del Fico, 1, Bologna, BO, Italia',
+                                raggio: 2,
+                                piva: 'IT0123456789',
+                                orari: creaOrari(),
+                                nome: 'Pizzeria da Ale Sasha',
+                                consegna: 1.50,
+                                gratis: 500,
+                                minimo: 5.50,
+                                tipo: 1,
+                                tz: 'Europe/Rome',
+                                lang: 'it-it',
+                            };
+
+                            associaFornitore(data2, function(err) {
+                                if (err) return die(err);
+
+                                associaRuolo(users[2], 'fornitore', function(err) {
+                                    if (err) return die(err);
+
+                                    var data = {
+                                        userId: itera('Mario', users).id,
+                                        via: 'Via del Fico',
+                                        telefono: '123-456789',
+                                        civico: '2',
+                                        citta: 'Bologna',
+                                        provincia: 'Bo',
+                                        stato: 'Italia',
+                                        geopoint: loopback.GeoPoint({lat: 44.49712, lng: 11.34448}),
+                                        completo: 'Via del Fico, 1, Bologna, BO, Italia',
+                                        raggio: 2,
+                                        piva: 'IT0123456789',
+                                        orari: creaOrari(),
+                                        nome: 'Alimentari sempre chiuso',
+                                        consegna: 1.50,
+                                        gratis: 500,
+                                        minimo: 5.50,
+                                        tipo: 0,
+                                        tz: 'Europe/Rome',
+                                        lang: 'it-it',
+                                    };
+
+                                    associaFornitore(data, function(err) {
+                                        if (err) return die(err);
+                                        associaRuolo(users[3], 'fornitore', function(err) {
+                                            if (err) return die(err);
+
+                                            var data2 = {
+                                                userId: itera('Pasquale', users).id,
+                                                via: 'Via del Fico',
+                                                telefono: '123-456789',
+                                                civico: '2',
+                                                citta: 'Bologna',
+                                                provincia: 'Bo',
+                                                stato: 'Italia',
+                                                geopoint: loopback.GeoPoint({lat: 44.49712, lng: 11.34448}),
+                                                completo: 'Via del Fico, 1, Bologna, BO, Italia',
+                                                raggio: 2,
+                                                piva: 'IT0123456789',
+                                                orari: creaOrariChiuso(),
+                                                nome: 'Pizzeria sempre chiusa',
+                                                consegna: 1.50,
+                                                gratis: 500,
+                                                minimo: 5.50,
+                                                tipo: 1,
+                                                tz: 'Europe/Rome',
+                                                lang: 'it-it',
+                                            };
+
+                                            associaFornitore(data2, function(err) {
+                                                if (err) return die(err);
+
+                                                cb();
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+};

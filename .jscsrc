@@ -1,0 +1,14 @@
+{
+    "preset": "airbnb",
+    "validateIndentation": 4,
+	"requireCamelCaseOrUpperCaseIdentifiers": null,
+    "requireDotNotation": "except_snake_case",
+    "excludeFiles": [
+        "client/src/scripts/lib/lb-services.js",
+        "client/vendor",
+        "client/src/scripts/lib/autocomplete.js",
+        "client/src/scripts/lib/globals.js",
+        "e2e-tests/protractor.conf.js",
+        "client/src/scripts/sr.js"
+    ]
+}

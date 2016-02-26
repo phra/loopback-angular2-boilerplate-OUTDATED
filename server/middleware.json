@@ -1,0 +1,24 @@
+{
+  "initial:before": {
+    "loopback#favicon": {}
+  },
+  "initial": {},
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes": {},
+  "files": {
+    "loopback#static": {
+      "params": "$!../client/dist"
+    }
+  },
+  "seo": {
+      "./middleware/prerender": {}
+  },
+  "final": {
+    "loopback#urlNotFound": {}
+  },
+  "final:after": {
+    "errorhandler": {}
+  }
+}

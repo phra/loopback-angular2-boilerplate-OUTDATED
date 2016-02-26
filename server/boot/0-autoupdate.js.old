@@ -1,0 +1,13 @@
+module.exports = function(app, cb) {
+    app.dataSources.postgres.automigrate(function(err) {
+        if (err)
+            throw err;
+        console.log('POSTGRES AUTOMIGRATE DONE');
+        app.dataSources.redisDS.autoupdate(function(err) {
+            if (err)
+                throw err;
+            console.log('REDIS AUTOMIGRATE DONE');
+            cb();
+        });
+    });
+};

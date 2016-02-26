@@ -1,0 +1,39 @@
+{
+  "name": "userIdentity",
+  "plural": "userIdentities",
+  "base": "UserIdentity",
+  "properties": {
+    "profile": {
+      "type": "string",
+      "required": true,
+      "length": 2048,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "profile",
+        "dataType": "character varying",
+        "dataLength": 2048,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

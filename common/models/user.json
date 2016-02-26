@@ -1,0 +1,102 @@
+{
+  "name": "user",
+  "plural": "users",
+  "base": "User",
+  "properties": {
+    "nome": {
+      "type": "string"
+    },
+    "cognome": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string",
+      "required": false
+    },
+    "ruolo": {
+      "type": "number",
+      "required": true,
+      "default": 2
+    },
+    "abilitato": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "created": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "updated": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "accessToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
+    },
+    "indirizzi": {
+      "type": "hasMany",
+      "model": "indirizzo",
+      "foreignKey": "userId"
+    },
+    "ordinicliente": {
+      "type": "hasMany",
+      "model": "ordine",
+      "foreignKey": "clienteId"
+    },
+    "ordinifornitore": {
+      "type": "hasMany",
+      "model": "ordine",
+      "foreignKey": "userfornitoreId"
+    },
+    "fornitores": {
+      "type": "hasOne",
+      "model": "fornitore",
+      "foreignKey": ""
+    },
+    "feedbacks": {
+      "type": "hasMany",
+      "model": "feedback",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "time"
+    }
+  ],
+  "methods": {}
+}

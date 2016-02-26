@@ -1,0 +1,42 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory",
+    "file": "db.json"
+  },
+  "postgres": {
+    "host": "/var/run/postgresql",
+    "port": 5432,
+    "database": "crowdfunding-phra",
+    "username": "",
+    "password": "",
+    "name": "postgres",
+    "connector": "postgresql"
+  },
+  "redisDS": {
+    "host": "127.0.0.1",
+    "port": "6379",
+    "name": "redisDS",
+    "connector": "redis"
+  },
+  "Email": {
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "localhost",
+        "secure": false,
+        "tls": {
+          "rejectUnauthorized": false
+        }
+      }
+    ]
+  },
+  "fs": {
+    "name": "fs",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "/storage"
+  }
+}

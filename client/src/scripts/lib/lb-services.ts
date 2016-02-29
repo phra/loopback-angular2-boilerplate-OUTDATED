@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Inject} from 'angular2/core';
 import {Http, Headers, Request, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -109,7 +109,7 @@ export abstract class BaseLoopBackApi {
 
   protected path: string;
 
-  constructor(protected http: Http) {
+  constructor(@Inject(Http) protected http: Http) {
     this.init();
   }
 
@@ -122,7 +122,7 @@ export abstract class BaseLoopBackApi {
   }
 
   protected init() {
-    this.path = "/api";
+    this.path = "http://localhost:3003/api";
   }
 
   /**
@@ -176,7 +176,7 @@ export abstract class BaseLoopBackApi {
 @Injectable()
 export class UserApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -1279,7 +1279,7 @@ export class UserApi extends BaseLoopBackApi {
 @Injectable()
 export class AccessTokenApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -1826,7 +1826,7 @@ export class AccessTokenApi extends BaseLoopBackApi {
 @Injectable()
 export class UserCredentialApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -2345,7 +2345,7 @@ export class UserCredentialApi extends BaseLoopBackApi {
 @Injectable()
 export class UserIdentityApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -2864,7 +2864,7 @@ export class UserIdentityApi extends BaseLoopBackApi {
 @Injectable()
 export class ProdottoApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -3239,7 +3239,7 @@ export class ProdottoApi extends BaseLoopBackApi {
 @Injectable()
 export class FornitoreApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 
@@ -3742,7 +3742,7 @@ export class FornitoreApi extends BaseLoopBackApi {
 @Injectable()
 export class FileApi extends BaseLoopBackApi {
 
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     super(http);
   }
 

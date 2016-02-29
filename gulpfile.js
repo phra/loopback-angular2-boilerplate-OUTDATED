@@ -56,7 +56,7 @@ var src = {
     bower: 'client/vendor/',
     img  : 'client/src/images/',
     fonts: 'client/src/fonts/',
-    vendor: 'client/vendor/',
+    vendor: 'client/src/scripts/vendor/',
     video: 'client/src/video/',
 };
 

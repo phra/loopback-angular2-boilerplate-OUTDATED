@@ -1,0 +1,5 @@
+<button (click)='getData()'>getData</button>
+<div *ngFor='#r of ajax.result'>
+  <p>Ticket ID #{{r.id}}</p>
+  <p>Body: {{r.body}}</p>
+</div>

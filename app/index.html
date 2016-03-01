@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Angular 2 JSPM Seed</title>
+    <base href="./">
+
+    <script src="vendor/angular2-polyfills.min.js"></script>
+
+    <!--removeIf(production)-->
+    <script src="jspm/system.js"></script>
+    <script src="jspm-config/config.js"></script>
+    <script>
+      System.import('src/boot')
+        .then(null, console.error.bind(console));
+    </script>
+    <!--endRemoveIf(production)-->
+
+    <!--removeIf(development)-->
+    <script src="app.min.js"></script>
+    <!--endRemoveIf(development)-->
+
+  </head>
+
+  <body>
+    <my-app>Loading...</my-app>
+  </body>
+
+</html>

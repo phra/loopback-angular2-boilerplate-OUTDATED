@@ -1,8 +1,5 @@
 var path = require('path');
 var maxmind = require('maxmind');
-var timezone = require('maxmind/lib/time_zone');
-var moment1 = require('moment');
-var momenttz = require('moment-timezone');
 var loopback2 = require('loopback');
 var recaptcha = require('express-recaptcha');
 maxmind.init(['GeoLiteCity.dat', 'GeoLiteCityv6.dat',], {indexCache: true, checkForUpdates: true});
@@ -91,28 +88,6 @@ module.exports = function(User) {
             if (err) return console.log('> error sending password reset email');
             console.log('> sending password reset email to:', info.email);
         });
-    });
-
-    User.time = function(req, cb) {
-        var ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
-        if (ip.startsWith('192') || ip.startsWith('10') || ip.startsWith('127') || ip.startsWith('::1'))
-            ip = '88.35.1.1';
-        var l = maxmind.getLocationV6(ip) || maxmind.getLocation(ip);
-        var tz = timezone(l.countryCode, l.region);
-        var data = moment1().tz(tz).format();
-        var res = {
-            data: data,
-            tz: tz,
-        };
-        cb(null, res);
-    };
-
-    User.remoteMethod('time', {
-        accepts: [
-            {arg: 'req', type: 'object', http: {source: 'req'}},
-        ],
-        returns: {arg: 'data', type: 'object'},
-        http: {path:'/time', verb: 'get'},
     });
 
     User.creafornitore = function(req, fornitore, user, cb) {

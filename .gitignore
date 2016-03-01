@@ -31,3 +31,4 @@ node_modules/
 target/
 __MACOSX
 .DS_Store
+dump.rdb

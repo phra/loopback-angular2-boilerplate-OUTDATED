@@ -1,5 +1,3 @@
-var basicAuth = require('loopback').basicAuth;
-
 module.exports = function mountLoopBackExplorer(server, cb) {
     var explorer;
     try {
@@ -16,14 +14,15 @@ module.exports = function mountLoopBackExplorer(server, cb) {
         return;
     }
 
-    server.use('/explorer', basicAuth('user', 'password'));
-    explorer(server, {
+    var options = {
         apiInfo: {
             'title': 'My API',
             'description': 'Explorer example app.'
         },
-        version: '0.1-unreleasable'
-    });
+        version: '0.1-unreleasable',
+        basePath: '/api'
+    };
+    server.use('/explorer', explorer.routes(server, options));
 
     cb();
 };

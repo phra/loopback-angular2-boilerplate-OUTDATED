@@ -1,5 +1,5 @@
-var polyfill = require('babel-polyfill');
-var babel = require('babel-register');
+"use strict";
+
 var path = require('path');
 var morgan = require('morgan');
 var loopback = require('loopback');

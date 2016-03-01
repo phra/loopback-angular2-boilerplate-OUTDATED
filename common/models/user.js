@@ -1,8 +1,6 @@
 var path = require('path');
-var maxmind = require('maxmind');
 var loopback2 = require('loopback');
 var recaptcha = require('express-recaptcha');
-maxmind.init(['GeoLiteCity.dat', 'GeoLiteCityv6.dat',], {indexCache: true, checkForUpdates: true});
 recaptcha.init('6LfkIRETAAAAAC2MIOUpMk0v04JGkMwJtwhEln9T', '6LfkIRETAAAAAA3mQE9GDpFoZ6N6_PbpaE1MLziT');
 
 module.exports = function(User) {

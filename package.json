@@ -1,11 +1,11 @@
 {
-  "name": "crowdfunding",
+  "name": "loopback-angular2-boilerplate",
   "version": "0.0.2",
   "main": "server/server.js",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/dovps/dovps.git"
+    "url": "https://github.com/phra/loopback-angular2-boilerplate"
   },
   "scripts": {
     "jspm-init": "jspm init",
@@ -19,8 +19,8 @@
     "preinstall": "npm prune && npm update",
     "test": "gulp test",
     "update-webdriver": "node_modules/protractor/bin/webdriver-manager update",
-    "lbng": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js client/src/scripts/lib/lb-services.js",
-    "lbng2": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js client/src/scripts/lib/lb-services.js .l angular2",
+    "lbng": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js app/src/lib/lb-services.js",
+    "lbng2": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js app/src/lib/lb-services.ts -l angular2",
     "db-migrate-create": "node_modules/db-migrate/bin/db-migrate --config migrations/database.json --migrations-dir migrations/migrations --verbose create --sql-file",
     "db-migrate-up": "node_modules/db-migrate/bin/db-migrate --config migrations/database.json --migrations-dir migrations/migrations --verbose up -e `cat server/datasources.json | grep -A 2 postgres | grep database | cut -d'\"' -f 4`",
     "db-migrate-down": "node_modules/db-migrate/bin/db-migrate --config migrations/database.json --migrations-dir migrations/migrations --verbose down -e `cat server/datasources.json | grep -A 2 postgres | grep database | cut -d'\"' -f 4`"

@@ -20,6 +20,7 @@
     "serve": "gulp",
     "preinstall": "npm prune && npm update",
     "test": "gulp test",
+    "e2e": "gulp e2e",
     "update-webdriver": "node_modules/protractor/bin/webdriver-manager update",
     "lbng": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js app/src/lib/lb-services.js",
     "lbng2": "node_modules/loopback-sdk-angular-cli/bin/lb-ng server/server.js app/src/lib/lb-services.ts -l angular2",

@@ -21,12 +21,14 @@ coverage
 build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
-client/src/styles/app.css
-client/src/styles/sprite.css
-GeoLiteCity.dat
-GeoLiteCityv6.dat
-GeoLiteCity.dat.gz
-GeoLiteCityv6.dat.gz
-client/dev
-client/dist
+*.rej
+*.orig
+*.iml
+*.ipr
+*.iws
+.idea
+node_modules/
+target/
+__MACOSX
+.DS_Store
+dump.rdb

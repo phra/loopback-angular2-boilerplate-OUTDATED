@@ -1,0 +1,24 @@
+<md-toolbar class="fixed-toolbar">
+  <div class="md-toolbar-tools">
+    <button md-button class="md-icon-button" aria-label="Settings" (click)="clicked('Menu')">
+      <i class="material-icons" md-icon>menu</i>
+    </button>
+    <h2>
+      <span>{{'title' | translate}} </span>
+    </h2>
+    <span flex></span>
+    <button md-button class="md-icon-button" aria-label="Home" [routerLink]="['/Home']">
+      <i class="material-icons" md-icon>home</i>
+    </button>
+    <button md-button class="md-icon-button" aria-label="About" [routerLink]="['/About']">
+      <i class="material-icons" md-icon >info</i>
+    </button>
+    <button md-button class="md-icon-button" aria-label="More" (click)="clicked('Show More')">
+      <i class="material-icons" md-icon >more_vert</i>
+    </button>
+  </div>
+</md-toolbar>
+
+<md-content class="app-content" layout-padding md-scroll-y>
+  <router-outlet></router-outlet>
+</md-content>

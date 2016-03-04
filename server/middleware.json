@@ -9,7 +9,7 @@
   "routes": {},
   "files": {
     "loopback#static": {
-      "params": "$!../client/dist"
+      "params": "$!../target/production/"
     }
   },
   "seo": {

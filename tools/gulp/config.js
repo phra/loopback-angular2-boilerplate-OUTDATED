@@ -43,7 +43,10 @@ module.exports = {
     html: app + '/**/*.html',
     scripts: src + '/**/*.ts',
     sass: app + '/**/*.scss',
-    assets: app + '/assets/**/*.*'
+    models: app + '../common/**/*.*',
+    assets: app + '/assets/**/*.*',
+    server: app + '/../server/**/*.*',
+    serverjs: app + '/../server/server.js'
   },
   app: app,
   production: production,

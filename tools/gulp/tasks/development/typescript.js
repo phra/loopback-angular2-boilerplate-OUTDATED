@@ -11,7 +11,7 @@ var tsProject = typescript.createProject('tsconfig.json');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 
-gulp.task('typescript-dev', ['test:backend'], function () {
+gulp.task('typescript-dev', [], function () {
   return gulp.src(conf.scripts)
     .pipe(cache('typescript'))
     .pipe(sourcemaps.init())

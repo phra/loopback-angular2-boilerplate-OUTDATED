@@ -6,7 +6,7 @@ var runSequence = require('run-sequence');
  */
 gulp.task('deploy', function (callback) {
   runSequence('delete-deploy',
-    'lbservices2',
+    'lbng2',
     'typescript-deploy',
     'deploy-templates',
     'production-jspm-config',

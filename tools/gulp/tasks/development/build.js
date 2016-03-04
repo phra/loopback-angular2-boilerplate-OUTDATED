@@ -8,7 +8,7 @@ gulp.task('build', function (callback) {
   runSequence('delete',
     'copy-dev',
     'html-dev',
-    'lbng2',
+    'lbng2:dev',
     'typescript-dev',
     [
       'dev-templates',

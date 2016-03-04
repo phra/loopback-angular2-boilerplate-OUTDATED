@@ -31,4 +31,4 @@ function runProtractor(done) {
     });
 }
 
-gulp.task('e2e', ['typescript-e2e', 'webdriver-update'], runProtractor);
+gulp.task('e2e', ['lbng2', 'server:start', 'typescript-e2e', 'webdriver-update'], runProtractor);

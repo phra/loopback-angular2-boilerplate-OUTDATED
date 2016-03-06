@@ -25,13 +25,13 @@ System.config({
     "angular2": "npm:angular2@2.0.0-beta.7",
     "babel": "npm:babel@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.10",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "es6-promise": "npm:es6-promise@3.0.2",
     "es6-shim": "github:es-shims/es6-shim@0.33.13",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "ng2-material": "npm:ng2-material@0.2.8",
     "ng2-translate": "npm:ng2-translate@1.8.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "rxjs": "npm:rxjs@5.0.0-beta.0",
@@ -117,6 +117,9 @@ System.config({
     "github:theefer/plugin-sass@master": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "sass.js": "npm:sass.js@0.9.7"
+    },
+    "github:twbs/bootstrap@3.3.6": {
+      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:abbrev@1.0.7": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -498,13 +501,6 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:es6-module-loader@0.17.11": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
-      "util": "github:jspm/nodelibs-util@0.1.0",
-      "when": "npm:when@3.7.7"
-    },
     "npm:es6-promise@3.0.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -839,16 +835,6 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:ng2-material@0.2.8": {
-      "angular2": "npm:angular2@2.0.0-beta.7",
-      "es6-promise": "npm:es6-promise@3.0.2",
-      "es6-shim": "npm:es6-shim@0.33.13",
-      "reflect-metadata": "npm:reflect-metadata@0.1.2",
-      "rxjs": "npm:rxjs@5.0.0-beta.2",
-      "systemjs": "npm:systemjs@0.19.2",
-      "typescript": "npm:typescript@1.8.0",
-      "zone.js": "npm:zone.js@0.5.15"
-    },
     "npm:ng2-translate@1.8.0": {
       "angular2": "npm:angular2@2.0.0-beta.7",
       "es6-promise": "npm:es6-promise@3.0.2",
@@ -1163,14 +1149,6 @@ System.config({
     "npm:supports-color@2.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:systemjs@0.19.2": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "es6-module-loader": "npm:es6-module-loader@0.17.11",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
-      "when": "npm:when@3.7.7"
-    },
     "npm:tar-pack@3.1.3": {
       "debug": "npm:debug@2.2.0",
       "fstream": "npm:fstream@1.0.8",
@@ -1244,9 +1222,6 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
-    },
-    "npm:when@3.7.7": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:xtend@4.0.1": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"

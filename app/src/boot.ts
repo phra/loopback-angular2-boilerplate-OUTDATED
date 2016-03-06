@@ -1,9 +1,10 @@
-import 'ng2-material/dist/ng2-material.css!';
-import 'assets/material-icons.css!';
+import 'bootstrap/css/bootstrap.css!';
+import 'bootstrap/js/bootstrap';
 import 'assets/app.css!';
 
-import 'reflect-metadata';
-import 'es6-shim';
+// import 'reflect-metadata';
+// import 'es6-shim';
+import 'angular2/bundles/angular2-polyfills';
 import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
@@ -13,7 +14,7 @@ import {AppComponent} from './app';
 import * as lbServices from './lib/lb-services';
 
 console.log(lbServices);
-let lbServicesArray = [];
+let lbServicesArray : any[] = [];
 for (let key in lbServices) {
     lbServicesArray.push(lbServices[key]);
 }

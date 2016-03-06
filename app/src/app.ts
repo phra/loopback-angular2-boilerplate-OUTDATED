@@ -4,12 +4,13 @@ import {TranslateService, TranslatePipe} from 'ng2-translate/ng2-translate';
 
 import {Home} from './home/home';
 import {About} from './about/about';
+import {Login} from './components/login/login';
 
 @Component({
     selector: 'my-app',
     providers: [],
     templateUrl: 'src/app.html',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, Login],
     pipes: [TranslatePipe]
 })
 @RouteConfig([

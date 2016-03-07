@@ -2,7 +2,11 @@
   "initial:before": {
     "loopback#favicon": {}
   },
-  "initial": {},
+  "initial": {
+      "cors": {
+          "origin": true
+      }
+  },
   "session": {},
   "auth": {},
   "parse": {},

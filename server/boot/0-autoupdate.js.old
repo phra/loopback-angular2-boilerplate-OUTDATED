@@ -2,11 +2,11 @@ module.exports = function(app, cb) {
     app.dataSources.postgres.automigrate(function(err) {
         if (err)
             throw err;
-        console.log('POSTGRES AUTOMIGRATE DONE');
-        app.dataSources.redisDS.autoupdate(function(err) {
+        console.log('POSTGRES AUTOUPDATE DONE');
+        app.dataSources.redisDS.automigrate(function(err) {
             if (err)
                 throw err;
-            console.log('REDIS AUTOMIGRATE DONE');
+            console.log('REDIS AUTOUPDATE DONE');
             cb();
         });
     });

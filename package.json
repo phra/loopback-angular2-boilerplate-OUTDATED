@@ -18,7 +18,7 @@
     "watch": "gulp watch",
     "clean": "gulp clean",
     "deploy": "gulp deploy",
-    "serve": "gulp",
+    "serve": "npm run db-migrate-up && gulp",
     "preinstall": "npm prune && npm update",
     "test": "gulp test",
     "e2e": "gulp e2e",

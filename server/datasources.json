@@ -7,7 +7,7 @@
   "postgres": {
     "host": "/var/run/postgresql",
     "port": 5432,
-    "database": "crowdfunding-phra",
+    "database": "loopback",
     "username": "",
     "password": "",
     "name": "postgres",
@@ -37,6 +37,6 @@
     "name": "fs",
     "connector": "loopback-component-storage",
     "provider": "filesystem",
-    "root": "/storage"
+    "root": "./storage"
   }
 }

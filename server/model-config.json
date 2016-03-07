@@ -48,6 +48,10 @@
     "dataSource": "postgres",
     "public": true
   },
+  "indirizzo": {
+      "dataSource": "postgres",
+      "public": true
+  },
   "file": {
     "dataSource": "fs",
     "public": true

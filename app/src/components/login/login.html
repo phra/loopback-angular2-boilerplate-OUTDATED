@@ -1,0 +1,5 @@
+<input *ngIf="!user.user" [(ngModel)]="email" placeholder="Email">
+<input *ngIf="!user.user" [(ngModel)]="password" placeholder="Password">
+<button *ngIf="!user.user" (click)="login()">LOGIN</button>
+<button *ngIf="user.user" (click)="logout()">LOGOUT</button>
+<p *ngIf="user.user">Welcome {{user | json }}!</p>

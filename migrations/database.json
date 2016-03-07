@@ -10,10 +10,7 @@
     "filename": ":memory:"
   },
 
-  "crowdfunding-test": "postgres:///crowdfunding-test",
-  "crowdfunding-phra": "postgres:///crowdfunding-phra",
-  "crodfunding-ale": "postgres:///crowdfunding-ale",
-  "crowdfunding-gabriele": "postgres:///crowdfunding-gabriele",
-  "crowdfunding-staging": "postgres:///crowdfunding-staging",
-  "crowdfunding": "postgres:///crowdfunding"
+  "loopback": "postgres:///loopback",
+  "loopback-staging": "postgres:///loopback-staging",
+  "loopback-prod": "postgres:///loopback-prod"
 }

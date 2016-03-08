@@ -6,6 +6,7 @@ import 'rxjs/add/operator/first';
 @Component({
     selector: 'login',
     templateUrl: 'src/components/login/login.html',
+    styleUrls: ['src/components/login/login.css']
 })
 export class Login {
     private email: string;
@@ -19,7 +20,7 @@ export class Login {
         this.userApi.login({email: this.email, password: this.password}).first().subscribe(
             (response: any) => { this.user.user = response.user; },
             (error: any) => { this.user.clearUser(); console.error('login KO', error); },
-            () => { console.log('login COMPLETE', this.user); }
+            () => { console.log('Login COMPLETE', this.user); }
         );
     }
 

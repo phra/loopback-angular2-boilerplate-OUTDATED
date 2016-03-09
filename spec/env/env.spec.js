@@ -27,6 +27,22 @@ describe('test env.json', function() {
         expect(typeof env.development.PORT).toBe('number');
     });
 
+    it('it has development env with DOMAIN defined', function() {
+        expect(typeof env.development.DOMAIN).toBe('string');
+    });
+
+    it('it has development env with HOST defined', function() {
+        expect(typeof env.development.HOST).toBe('string');
+    });
+
+    it('it has development env with RECAPTCHA defined', function() {
+        expect(typeof env.development.RECAPTCHA).toBe('boolean');
+    });
+
+    it('it has development env with MORGAN defined', function() {
+        expect(typeof env.development.MORGAN).toBe('boolean');
+    });
+
     it('it has staging env', function() {
         expect(env.staging).toBeDefined();
     });
@@ -37,6 +53,22 @@ describe('test env.json', function() {
 
     it('it has staging env with PORT defined', function() {
         expect(typeof env.staging.PORT).toBe('number');
+    });
+
+    it('it has staging env with DOMAIN defined', function() {
+        expect(typeof env.staging.DOMAIN).toBe('string');
+    });
+
+    it('it has staging env with HOST defined', function() {
+        expect(typeof env.staging.HOST).toBe('string');
+    });
+
+    it('it has staging env with RECAPTCHA defined', function() {
+        expect(typeof env.staging.RECAPTCHA).toBe('boolean');
+    });
+
+    it('it has staging env with MORGAN defined', function() {
+        expect(typeof env.staging.MORGAN).toBe('boolean');
     });
 
     it('it has production env', function() {
@@ -50,4 +82,21 @@ describe('test env.json', function() {
     it('it has production env with PORT defined', function() {
         expect(typeof env.production.PORT).toBe('number');
     });
+
+    it('it has production env with DOMAIN defined', function() {
+        expect(typeof env.production.DOMAIN).toBe('string');
+    });
+
+    it('it has production env with HOST defined', function() {
+        expect(typeof env.production.HOST).toBe('string');
+    });
+
+    it('it has production env with RECAPTCHA defined', function() {
+        expect(typeof env.production.RECAPTCHA).toBe('boolean');
+    });
+
+    it('it has production env with MORGAN defined', function() {
+        expect(typeof env.production.MORGAN).toBe('boolean');
+    });
+
 });

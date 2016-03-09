@@ -1,21 +1,16 @@
 'use strict';
 
 var path = require('path');
-var morgan = require('morgan');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var bodyParser = require('body-parser');
-var env = require('../env.json')[process.env.NODE_ENV || 'development'];
+var config = require('../env.json')[process.env.NODE_ENV || 'development'];
 var app = module.exports = loopback();
 var passportConfigurator = require('loopback-component-passport').PassportConfigurator(app);
-var config;
 
-if (env.morgan) app.use(morgan('combined'));
-try {
-    config = env.providers;
-} catch (err) {
-    console.trace(err);
-    process.exit(1);
+if (config.morgan) {
+    var morgan = require('morgan');
+    app.use(morgan('combined'));
 }
 
 app.set('view engine', 'ejs');
@@ -46,15 +41,15 @@ passportConfigurator.setupModels({
 });
 
 // Configure passport strategies for third party auth providers
-for (var s in config) {
-    var c = config[s];
+for (var s in config.providers) {
+    var c = config.providers[s];
     c.session = c.session !== false;
     passportConfigurator.configureProvider(s, c);
 }
 
 app.start = function() {
     // start the web server
-    return app.listen(env.PORT, function() {
+    return app.listen(config.PORT, function() {
         app.emit('started');
         console.log('Web server listening at: %s', app.get('url'));
     });

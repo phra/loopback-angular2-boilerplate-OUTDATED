@@ -50,31 +50,6 @@
       "type": "hasMany",
       "model": "userCredential",
       "foreignKey": "userId"
-    },
-    "indirizzi": {
-      "type": "hasMany",
-      "model": "indirizzo",
-      "foreignKey": "userId"
-    },
-    "ordinicliente": {
-      "type": "hasMany",
-      "model": "ordine",
-      "foreignKey": "clienteId"
-    },
-    "ordinifornitore": {
-      "type": "hasMany",
-      "model": "ordine",
-      "foreignKey": "userfornitoreId"
-    },
-    "fornitores": {
-      "type": "hasOne",
-      "model": "fornitore",
-      "foreignKey": ""
-    },
-    "feedbacks": {
-      "type": "hasMany",
-      "model": "feedback",
-      "foreignKey": ""
     }
   },
   "acls": [
@@ -89,14 +64,6 @@
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "time"
-    }
-  ],
+    }],
   "methods": {}
 }

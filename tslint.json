@@ -50,7 +50,8 @@
       true,
       "ban-keywords",
       "check-format",
-      "allow-trailing-underscore"
+      "allow-trailing-underscore",
+      "allow-leading-underscore"
     ],
     "whitespace": [
       true,

@@ -36,21 +36,9 @@
     "dataSource": "postgres",
     "public": false
   },
-  "prodotto": {
-    "dataSource": "postgres",
-    "public": true
-  },
   "Email": {
     "dataSource": "Email",
     "public": false
-  },
-  "fornitore": {
-    "dataSource": "postgres",
-    "public": true
-  },
-  "indirizzo": {
-      "dataSource": "postgres",
-      "public": true
   },
   "file": {
     "dataSource": "fs",

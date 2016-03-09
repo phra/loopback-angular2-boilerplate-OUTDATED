@@ -1,8 +1,10 @@
+var config = require('../../env.json')[process.env.NODE_ENV || 'development'];
 var path = require('path');
 var loopback2 = require('loopback');
-var recaptcha = require('express-recaptcha');
-recaptcha.init('6LfkIRETAAAAAC2MIOUpMk0v04JGkMwJtwhEln9T', '6LfkIRETAAAAAA3mQE9GDpFoZ6N6_PbpaE1MLziT');
-
+if (config.recaptcha) {
+    var recaptcha = require('express-recaptcha');
+    recaptcha.init('XXXXXXXXXXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXXXXXXXXXXXXXxxxx');
+}
 module.exports = function(User) {
 
     User.observe('before save', function updateTimestamp(ctx, next) {
@@ -34,7 +36,6 @@ module.exports = function(User) {
         } else {
             next();
         }
-
     });
 
     User.afterRemote('create', function(context, user, next) {
@@ -51,11 +52,11 @@ module.exports = function(User) {
                 var options = {
                     type: 'email',
                     to: user.email,
-                    from: 'noreply@ordinodacasa.it',
+                    from: 'noreply@' + config.DOMAIN,
                     subject: 'Grazie per esserti registrato.',
                     redirect: '/',
                     user: user,
-                    host: 'www.ordinodacasa.it',
+                    host: config.HOST,
                     port: 443,
                     protocol: 'https',
                     template: path.join(__dirname, '..', '..', 'server', 'views', 'verify.ejs'),
@@ -75,7 +76,7 @@ module.exports = function(User) {
     });
 
     User.on('resetPasswordRequest', function(info) {
-        var url = 'https://www.ordinodacasa.it/password-reset';
+        var url = 'https://' + config.HOST + '/password-reset';
         var html = 'Clicca <a href="' + url + '?access_token=' + info.accessToken.id + '">qui</a> per resettare la tua password';
         User.app.models.Email.send({
             to: info.email,
@@ -86,94 +87,6 @@ module.exports = function(User) {
             if (err) return console.log('> error sending password reset email');
             console.log('> sending password reset email to:', info.email);
         });
-    });
-
-    User.creafornitore = function(req, fornitore, user, cb) {
-
-        var err = function(err) {
-            console.log('err', err);
-            cb(err);
-        };
-
-        var err2 = function(err, tx) {
-            console.log('err2', err);
-            tx.rollback(function(e) {
-                if (e) return cb(e);
-
-                cb(err);
-            });
-        };
-
-        var fixorari = function(fornitore) {
-            for (var i = 0; i < fornitore.orari.length; i++) {
-                if (fornitore.orari[i].length) {
-                    for (var j = 0; j < fornitore.orari[i].length; j++) {
-                        if (fornitore.orari[i][j].apertura) {
-                            fornitore.orari[i][j].apertura = fornitore.orari[i][j].apertura.toString();
-                            fornitore.orari[i][j].chiusura = fornitore.orari[i][j].chiusura.toString();
-                        }
-                    }
-                }
-            }
-        };
-
-        var makepsw = function(length) {
-            var text = '';
-            var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-            for( var i = 0; i < length; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
-        };
-
-        User.beginTransaction({isolationLevel: User.Transaction.READ_COMMITTED}, function(e, tx) {
-            if (e) return err(e);
-
-            fixorari(fornitore);
-            console.log(fornitore, fornitore.orari);
-            fornitore.geopoint = loopback2.GeoPoint({lat: fornitore.lat, lng: fornitore.lng});
-            fornitore.completo = fornitore.via + ', ' + fornitore.civico + ', ' + fornitore.citta + ', ' + fornitore.provincia + ', ' + fornitore.stato;
-            user.password = makepsw(8);
-            var t = {transaction: tx};
-
-            User.create(user, t, function(e, user) {
-                if (e) return err2(e, tx);
-
-                User.app.models.Role.findOne({where: {name: 'fornitore'}}, t, function(e, role) {
-                    if (e) return err2(e, tx);
-
-                    role.principals.create({principalType: User.app.models.RoleMapping.USER, principalId: user.id,}, t, function(e, principal) {
-                        if (e) return err2(e, tx);
-
-                        fornitore.userId = user.id;
-                        User.app.models.Fornitore.create(fornitore, t, function(e, fornitore) {
-                            if (e) return err2(e, tx);
-
-                            tx.commit(function(e) {
-                                if (e) return err2(e, tx);
-
-                                User.resetPassword({email: user.email}, function(e) {
-                                    if (e) return err(e);
-                                        
-                                    cb(null, user);
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    };
-
-    User.remoteMethod('creafornitore', {
-        accepts: [
-        {arg: 'req', type: 'object', http: {source: 'req'}},
-        {arg: 'fornitore', type: 'object'},
-        {arg: 'user', type: 'object'},
-        ],
-        returns: {arg: 'data', type: 'object'},
-        http: {path:'/creafornitore', verb: 'post'},
     });
 
 };

@@ -6,13 +6,13 @@ var runSequence = require('run-sequence');
  */
 gulp.task('build', function (callback) {
   runSequence('delete',
-    'copy-dev',
+    ['copy-dev',
     'html-dev',
     'lbng2:dev',
-    'typescript-dev',
+    'sass'],
     [
       'dev-templates',
-      'sass'
+      'typescript-dev'
     ],
     callback);
 });

@@ -4,9 +4,9 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var flatten = require('gulp-flatten');
 var config = require('../../config').sass.production;
-
 var globbing = require('gulp-css-globbing');
-gulp.task('sass-deploy', ['sass-deploy:components'], function () {
+
+gulp.task('sass-deploy', function () {
   gulp.src(config.main)
     .pipe(globbing({
       extensions: ['.scss']
@@ -17,11 +17,10 @@ gulp.task('sass-deploy', ['sass-deploy:components'], function () {
 });
 
 gulp.task('sass-deploy:components', function () {
-  gulp.src(config.source)
+    gulp.src(config.source)
     .pipe(globbing({
       extensions: ['.scss']
     }))
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(config.destsource))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(config.destsource));
 });

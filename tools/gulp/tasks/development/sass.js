@@ -6,6 +6,8 @@ var flatten = require('gulp-flatten');
 var browserSync = require('browser-sync');
 var globbing = require('gulp-css-globbing');
 var config = require('../../config').sass.development;
+var debug = require('gulp-debug');
+
 gulp.task('sass', ['sass:components'], function () {
   gulp.src(config.main)
     .pipe(globbing({
@@ -23,6 +25,6 @@ gulp.task('sass:components', function () {
       extensions: ['.scss']
     }))
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(config.destsource))
-    .pipe(browserSync.stream());
+    .pipe(debug({title: 'sass:dev'}))
+    .pipe(gulp.dest(config.destsource));
 });

@@ -10,12 +10,9 @@ describe('AppComponent component', () => {
     };
 
     let translateMock = {
-      useStaticFilesLoader: function() {
-
-      },
-      use: function() {
-
-      }
+      useStaticFilesLoader() {},
+      use() {},
+      setDefaultLang() {}
     };
     // noinspection TypeScriptValidateTypes
     var appComponent = new AppComponent(null, routerMock, translateMock);

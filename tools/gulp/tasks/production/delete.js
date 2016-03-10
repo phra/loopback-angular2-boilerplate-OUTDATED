@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var del = require('del');
 var path = require('../../config').delete.production;
 var deploySrc = path + '/src';
+
 /**
  * Delete folders and files
  */
@@ -10,5 +11,5 @@ gulp.task('delete-deploy', function () {
 });
 
 gulp.task('delete-deploy-src', function () {
-  return del(deploySrc);
+    return del([deploySrc + '/**/*', '!target/production/**/*.css']);
 });

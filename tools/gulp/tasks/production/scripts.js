@@ -4,9 +4,7 @@ var config = require('../../config').scripts.production;
 var jspm = require('jspm');
 var source = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
-var ngAnnotate = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
-var uglify     = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 gulp.task('scripts-bundle', function () {
@@ -17,7 +15,8 @@ gulp.task('scripts-bundle', function () {
       "assets/material-icons.css": "target/production/assets/material-icons.css",
       "assets/app.css": "target/production/assets/app.css"
     },
-    rootURL: "target/production/"
+    rootURL: "target/production/",
+    options: { minify: true, mangle: true }
   });
 
   return new Promise(function(resolve, reject) {
@@ -32,8 +31,6 @@ gulp.task('scripts-bundle', function () {
 
         return stream.pipe(vinylBuffer())
           .pipe(sourcemaps.init())
-          .pipe(ngAnnotate())
-          .pipe(uglify())
           .pipe(rename({ suffix: '.min' }))
           .pipe(sourcemaps.write())
           .pipe(gulp.dest(config.dest))

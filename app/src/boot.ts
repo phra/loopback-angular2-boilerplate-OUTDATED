@@ -9,7 +9,6 @@ import {provide, Inject} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS, Http} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
-//import {TRANSLATE_PROVIDERS} from 'ng2-translate/ng2-translate';
 import {TranslateLoader, TranslateStaticLoader, TranslateService} from 'ng2-translate/ng2-translate';
 import {User} from './services/user';
 

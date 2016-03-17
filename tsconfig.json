@@ -9,9 +9,11 @@
     "removeComments": false,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "diagnostics": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "target"
   ]
 }

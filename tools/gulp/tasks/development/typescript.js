@@ -16,7 +16,7 @@ gulp.task('typescript-dev', [], function () {
     .pipe(cache('typescript'))
     .pipe(sourcemaps.init())
     .pipe(tslint())
-    .pipe(tslint.report('prose', {emitError: false}))
+    .pipe(tslint.report('verbose', {emitError: false}))
     .pipe(typescript(tsProject))
     //.pipe(sourcemaps.write('./maps', {includeContent: false, sourceRoot: '/app/src'}))
     .pipe(gulp.dest(conf.dest))

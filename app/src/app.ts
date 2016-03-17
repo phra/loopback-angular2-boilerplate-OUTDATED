@@ -2,8 +2,8 @@ import {Component} from 'angular2/core';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, Location} from 'angular2/router';
 import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
 
-import {Home} from './home/home';
-import {About} from './about/about';
+import {Home} from './views/home/home';
+import {About} from './views/about/about';
 import {Header} from './components/header/header';
 
 @Component({

@@ -86,6 +86,7 @@ module.exports = {
       destsource: development + '/src'
     },
     production: {
+      src: app + '/scss/**/*.scss',
       main: app + '/scss/app.scss',
       source: src + '/**/*.scss',
       dest: production + '/assets',

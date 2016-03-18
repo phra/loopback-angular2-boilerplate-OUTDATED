@@ -1,4 +1,4 @@
-# LoopBack w/ Angular2 & JSPM Boilerplate
+# LoopBack w/ Angular2 & Gulp & JSPM & PostCSS Boilerplate
 
 ### Installing
 ```sh
@@ -7,13 +7,19 @@ $ cd loopback-angular2-boilerplate
 $ npm i
 ```
 
-### Developing
+### Developing (launch JSPM in development mode)
 ```sh
 $ npm run serve
 ```
 
-### Deploy
+### Deploy (create production build)
 
 ```sh
 $ npm run deploy
+```
+
+### Deploy + serve (create production build and launch node server)
+
+```
+$ npm run deploy-serve
 ```

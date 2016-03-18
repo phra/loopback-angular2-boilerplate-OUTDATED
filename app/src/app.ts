@@ -6,10 +6,19 @@ import {Home} from './views/home/home';
 import {About} from './views/about/about';
 import {Header} from './components/header/header';
 
+import * as lbServices from './lib/lb-services';
+import {User} from './services/user';
+
+let lbServicesArray: string[] = [];
+for (let key in lbServices) {
+    lbServicesArray.push(lbServices[key]);
+}
+
 @Component({
     selector: 'my-app',
-    providers: [],
+    providers: [User, ...lbServicesArray],
     templateUrl: 'src/app.html',
+    styleUrls: ['src/app.css'],
     directives: [ROUTER_DIRECTIVES, Header],
     pipes: [TranslatePipe]
 })

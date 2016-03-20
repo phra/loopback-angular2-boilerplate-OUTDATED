@@ -32,3 +32,5 @@ target/
 __MACOSX
 .DS_Store
 dump.rdb
+app/src/components/**/*.js
+app/src/components/**/*.js.map

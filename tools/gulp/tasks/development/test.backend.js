@@ -16,22 +16,6 @@ var tests = {
     back    : 'spec/'
 };
 
-var src = {
-    js   : 'app/src/',
-};
-
-gulp.task('pretest:jshint', function() {
-    return gulp.src([src.js + '**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
-});
-
-gulp.task('pretest:jscs', function() {
-    return gulp.src([src.js + '**/*.js'])
-    .pipe(jscs());
-});
-
 gulp.task('pretest:jshint:back', function() {
     return gulp.src([back.js + '**/*.js', back.models + '**/*.js', tests.back + '**/*.js'])
     .pipe(jshint())
@@ -58,6 +42,5 @@ gulp.task('test:jasmine', function(cb) {
 });
 
 gulp.task('test:backend', function(cb) {
-    runSequence('pretest:jshint', 'pretest:jscs', 'pretest:jshint:back', 'pretest:jscs:back', 'test:jasmine', cb);
+    runSequence('pretest:jshint:back', 'pretest:jscs:back', 'test:jasmine', cb);
 });
-

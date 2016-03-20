@@ -8,17 +8,17 @@
     "url": "https://github.com/phra/loopback-angular2-boilerplate"
   },
   "scripts": {
-    "jspm-init": "jspm init",
-    "jspm-install": "jspm install",
-    "jspm-uninstall": "jspm uninstall",
-    "jspm-update": "jspm update",
-    "jspm-link": "jspm link",
+    "jspm:init": "jspm init",
+    "jspm:install": "jspm install",
+    "jspm:uninstall": "jspm uninstall",
+    "jspm:update": "jspm update",
+    "jspm:link": "jspm link",
     "update": "npm-check -u && jspm update",
     "postinstall": "typings install && jspm install",
-    "typings-install": "typings install --ambient --save",
+    "typings:install": "typings install --ambient --save",
     "typings": "typings",
     "deploy": "gulp deploy",
-    "deploy-serve": "gulp deploy && (sleep 5 && xdg-open http://localhost:3003 &) && node server/server.js",
+    "deploy:serve": "gulp deploysourcemaps && (sleep 5 && xdg-open http://localhost:3003 &) && node server/server.js",
     "serve": "npm run db-migrate-up && gulp",
     "preinstall": "npm prune && npm update",
     "test": "gulp test",
@@ -140,7 +140,7 @@
     },
     "configFile": "app/jspm-config/config.js",
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.10",
+      "angular2": "npm:angular2@2.0.0-beta.11",
       "babel": "npm:babel@^5.8.23",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "css": "github:systemjs/plugin-css@^0.1.6",
@@ -157,6 +157,7 @@
       "-": "npm:babel-core@^5.8.24",
       "--runtime": "npm:babel-runtime@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "clean-css": "npm:clean-css@^3.4.10",
       "core-js": "npm:core-js@^1.1.0",
       "typescript": "npm:typescript@^1.8.9"
     }

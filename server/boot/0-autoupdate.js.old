@@ -1,9 +1,9 @@
 module.exports = function(app, cb) {
-    app.dataSources.postgres.automigrate(function(err) {
+    app.dataSources.postgres.autoupdate(function(err) {
         if (err)
             throw err;
         console.log('POSTGRES AUTOUPDATE DONE');
-        app.dataSources.redisDS.automigrate(function(err) {
+        app.dataSources.redisDS.autoupdate(function(err) {
             if (err)
                 throw err;
             console.log('REDIS AUTOUPDATE DONE');

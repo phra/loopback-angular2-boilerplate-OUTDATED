@@ -3,9 +3,9 @@
     "loopback#favicon": {}
   },
   "initial": {
-      "cors": {
-          "origin": true
-      }
+    "cors": {
+      "origin": true
+    }
   },
   "session": {},
   "auth": {},
@@ -17,7 +17,7 @@
     }
   },
   "seo": {
-      "./middleware/prerender": {}
+    "./middleware/prerender": {}
   },
   "final": {
     "loopback#urlNotFound": {}

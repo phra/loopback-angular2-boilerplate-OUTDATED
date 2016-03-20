@@ -1,0 +1,32 @@
+<input type="button" name="load" value="Load items" (click)="getItems()">
+<p>
+    {{ text }}
+</p>
+<table class="table" *ngIf="items.length">
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                NAME
+            </td>
+            <td>
+                DESC
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="#item of items">
+            <td>
+                {{ item.id }}
+            </td>
+            <td>
+                {{ item.name }}
+            </td>
+            <td>
+                {{ item.desc }}
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -43,5 +43,9 @@
   "file": {
     "dataSource": "fs",
     "public": true
+  },
+  "item": {
+    "dataSource": "postgres",
+    "public": true
   }
 }

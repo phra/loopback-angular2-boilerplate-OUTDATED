@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Inject} from 'angular2/core';
 import {Router, Route, RouteConfig, ROUTER_DIRECTIVES, Location} from 'angular2/router';
 import {TranslatePipe, TranslateService} from 'ng2-translate/ng2-translate';
 
@@ -6,6 +6,7 @@ import {Home} from './views/home/home';
 import {About} from './views/about/about';
 import {Header} from './components/header/header';
 
+import {UserApi} from './lib/lb-services';
 import * as lbServices from './lib/lb-services';
 import {User} from './services/user';
 
@@ -30,7 +31,7 @@ export class AppComponent {
     location: Location;
     currentPathStr = '';
 
-    constructor(location: Location, router: Router, translate: TranslateService) {
+    constructor(location: Location, router: Router, translate: TranslateService, @Inject(lbServices.UserApi) userApi: lbServices.UserApi, user: User) {
         this.location = location;
         this.currentPathStr = '/home';
         router.subscribe((value) => this.currentPathStr = value);
@@ -40,6 +41,9 @@ export class AppComponent {
         translate.setDefaultLang('en');
         // the lang to use, if the lang isn't available, it will use the current loader to get them
         translate.use(userLang);
+        if (userApi.isAuthenticated()) {
+            userApi.logout();
+        }
     }
 
     clicked(message: string) {

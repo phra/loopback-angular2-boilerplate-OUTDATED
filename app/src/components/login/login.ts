@@ -1,7 +1,6 @@
 import {Component, Inject} from 'angular2/core';
 import {User} from '../../services/user';
 import {UserApi, AccessTokenApi} from '../../lib/lb-services';
-import 'rxjs/add/operator/first';
 
 @Component({
     selector: 'login',
@@ -17,7 +16,7 @@ export class Login {
 
     public login() {
         console.log('Login');
-        this.userApi.login({email: this.email, password: this.password}).first().subscribe(
+        this.userApi.login({email: this.email, password: this.password}).subscribe(
             (response: any) => { this.user.user = response.user; },
             (error: any) => { this.user.clearUser(); console.error('login KO', error); },
             () => { console.log('Login COMPLETE', this.user); }
@@ -26,7 +25,7 @@ export class Login {
 
     public logout() {
         console.log('Logout');
-        this.userApi.logout().first().subscribe(
+        this.userApi.logout().subscribe(
             (response: any) => { this.user.clearUser(); },
             (error: any) => { this.user.clearUser(); console.log('Logout KO'); },
             () => { console.log('Logout COMPLETE'); }

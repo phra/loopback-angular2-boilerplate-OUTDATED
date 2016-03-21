@@ -192,40 +192,6 @@ ALTER SEQUENCE item_id_seq OWNED BY item.id;
 
 
 --
--- TOC entry 174 (class 1259 OID 17612)
--- Name: migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE migrations (
-    id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    run_on timestamp without time zone NOT NULL
-);
-
-
---
--- TOC entry 173 (class 1259 OID 17610)
--- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE migrations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 2129 (class 0 OID 0)
--- Dependencies: 173
--- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE migrations_id_seq OWNED BY migrations.id;
-
-
---
 -- TOC entry 181 (class 1259 OID 17642)
 -- Name: prodotto; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
@@ -496,14 +462,6 @@ ALTER TABLE ONLY item ALTER COLUMN id SET DEFAULT nextval('item_id_seq'::regclas
 
 
 --
--- TOC entry 1955 (class 2604 OID 17615)
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY migrations ALTER COLUMN id SET DEFAULT nextval('migrations_id_seq'::regclass);
-
-
---
 -- TOC entry 1959 (class 2604 OID 17693)
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
@@ -623,24 +581,6 @@ INSERT INTO item VALUES ('item5', 'desc5', '2016-03-20 01:00:00+01', '2016-03-20
 --
 
 SELECT pg_catalog.setval('item_id_seq', 5, true);
-
-
---
--- TOC entry 2098 (class 0 OID 17612)
--- Dependencies: 174
--- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO migrations VALUES (1, '/20160307111031-init', '2016-03-07 23:00:01.719');
-
-
---
--- TOC entry 2140 (class 0 OID 0)
--- Dependencies: 173
--- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('migrations_id_seq', 1, true);
 
 
 --
@@ -786,15 +726,6 @@ ALTER TABLE ONLY indirizzo
 
 ALTER TABLE ONLY item
     ADD CONSTRAINT item_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 1967 (class 2606 OID 17617)
--- Name: migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY migrations
-    ADD CONSTRAINT migrations_pkey PRIMARY KEY (id);
 
 
 --

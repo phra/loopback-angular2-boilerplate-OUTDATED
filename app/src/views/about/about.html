@@ -1,4 +1,5 @@
-<div>ABOUT</div>
-<button (click)="onClickMe()">Action 1</button>
-<button (click)="onClickMe()">Action 2</button>
-<p>{{ clickMessage }}</p>
+<div class="container">
+<button name="action1" #button1 (click)="onClickMe(button1)">Action 1</button>
+<button name="action2" #button2 (click)="onClickMe(button2)">Action 2</button>
+<p class="bg-success">{{ clickMessage }}</p>
+</div>

@@ -3,10 +3,17 @@ import {About} from './about';
 
 describe('HomeComponent component', () => {
   it('should be able to create and onClickMe method', () => {
-    var aboutComponent = new About();
+    let aboutComponent: About = new About();
+    expect(aboutComponent).toBeDefined();
+  });
+  it('should be able to invoke onClickMe method', () => {
+    let aboutComponent: About = new About();
+    let button: any = {
+      name: 'TEST'
+    };
     expect(aboutComponent).toBeDefined();
     expect(aboutComponent.clickMessage).toEqual('');
-    aboutComponent.onClickMe();
-    expect(aboutComponent.clickMessage).toEqual('You are my hero!');
+    aboutComponent.onClickMe(<any> button);
+    expect(aboutComponent.clickMessage).toEqual('You have clicked TEST!');
   });
 });

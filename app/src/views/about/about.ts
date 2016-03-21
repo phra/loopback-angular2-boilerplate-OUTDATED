@@ -7,7 +7,7 @@ import {Component} from 'angular2/core';
 })
 export class About {
   clickMessage = '';
-  onClickMe() {
-    this.clickMessage = 'You are my hero!';
+  onClickMe(button: HTMLButtonElement) {
+    this.clickMessage = `You have clicked ${button.name}!`;
   }
 }

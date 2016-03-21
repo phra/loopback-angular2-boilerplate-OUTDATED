@@ -1,19 +1,19 @@
 <input type="button" name="load" value="Load items" (click)="getItems()">
-<p>
+<p *ngIf="text" class="bg-danger">
     {{ text }}
 </p>
-<table class="table" *ngIf="items.length">
+<table class="table table-bordered table-striped" *ngIf="items.length">
     <thead>
         <tr>
-            <td>
+            <th>
                 ID
-            </td>
-            <td>
+            </th>
+            <th>
                 NAME
-            </td>
-            <td>
+            </th>
+            <th>
                 DESC
-            </td>
+            </th>
         </tr>
     </thead>
     <tbody>

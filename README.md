@@ -21,5 +21,5 @@ $ npm run deploy
 ### Deploy + serve (create production build and launch node server)
 
 ```
-$ npm run deploy-serve
+$ npm run deploy:serve
 ```

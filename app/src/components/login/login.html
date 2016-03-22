@@ -1,7 +1,7 @@
-<form class="form-inline">
-<input required class="form-control" *ngIf="!user.user" [(ngModel)]="email" placeholder="Email">
-<input required class="form-control" *ngIf="!user.user" [(ngModel)]="password" placeholder="Password">
-<button *ngIf="!user.user" (click)="login()">LOGIN</button>
-<p class="pull-left" *ngIf="user.user">Welcome <b>{{user.user.nome}} {{user.user.cognome}}</b></p>
-<button class="pull-right" *ngIf="user.user" (click)="logout()">LOGOUT</button>
+<form class="form-inline" (ngSubmit)="login()">
+<input *ngIf="!user.user" required class="form-control" type="string" [(ngModel)]="email" placeholder="Email">
+<input *ngIf="!user.user" required class="form-control" type="password" [(ngModel)]="password" placeholder="Password">
+<p *ngIf="user.user" class="pull-left" >Welcome <b>{{user.user.nome}} {{user.user.cognome}}</b></p>
+<button *ngIf="!user.user" type="submit">LOGIN</button>
+<button *ngIf="user.user" type="button" (click)="logout()">LOGOUT</button>
 </form>

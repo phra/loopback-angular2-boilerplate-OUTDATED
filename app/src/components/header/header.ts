@@ -11,4 +11,9 @@ import {Login} from '../login/login';
     pipes: [TranslatePipe]
 })
 
-export class Header {}
+export class Header {
+
+  public loggedin(event: string): any {
+    alert(event);
+  }
+}

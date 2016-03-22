@@ -19,7 +19,7 @@
         </ul>
 
         <div class="navbar-right">
-            <login></login>
+            <login [input]="parameter" (logged)="loggedin($event)"></login>
         </div>
     </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->

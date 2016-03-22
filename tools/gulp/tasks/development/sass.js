@@ -10,10 +10,12 @@ var globbing = require('gulp-css-globbing');
 var config = require('../../config').sass.development;
 var debug = require('gulp-debug');
 var processorsDev = [
+    require('stylelint')({}),
+    require('doiuse')({browsers: ['> 0.1%']}),
     require('postcss-nested')(),
     require('postcss-cssnext')({browsers: ['> 0.1%']}),
-    require("postcss-browser-reporter")(),
-    require("postcss-reporter")()
+    require('postcss-browser-reporter')(),
+    require('postcss-reporter')()
 ];
 
 gulp.task('sass', ['sass:components'], function () {

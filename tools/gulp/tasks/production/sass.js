@@ -9,10 +9,13 @@ var globbing = require('gulp-css-globbing');
 var config = require('../../config').sass.production;
 var debug = require('gulp-debug');
 var processorsProd = [
-    require('postcss-nested')(),
-    require('postcss-cssnext')({browsers: ['> 0.1%']}),
-    require("postcss-browser-reporter")(),
-    require("postcss-reporter")()
+  require('stylelint')({}),
+  require('doiuse')({browsers: ['> 0.1%']}),
+  require('postcss-nested')(),
+  require('postcss-cssnext')({browsers: ['> 0.1%']}),
+  require('cssnano')(),
+  require('postcss-browser-reporter')(),
+  require('postcss-reporter')()
 ];
 
 gulp.task('sass-deploy', ['sass-deploy:components'], function () {

@@ -34,3 +34,4 @@ __MACOSX
 dump.rdb
 app/src/components/**/*.js
 app/src/components/**/*.js.map
+typings/

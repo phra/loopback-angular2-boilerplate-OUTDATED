@@ -18,7 +18,7 @@ export class Login {
 
     public login() {
         this.userApi.login({email: this.email, password: this.password}).subscribe(
-            (response: any) => { this.user.user = response.user; this.logged.emit('LOGGED IN!');},
+            (response: any) => { this.user.user = response.user; this.logged.emit('LOGGED IN!'); },
             (error: any) => { this.user.clearUser(); console.error('login KO', error); },
             () => { console.log('Login COMPLETE', this.user); }
         );

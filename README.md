@@ -1,4 +1,5 @@
 # LoopBack w/ Angular2 & Gulp & JSPM & PostCSS Boilerplate
+# DEPRECATED -> updated started kit -> https://github.com/phra/angular2-loopback-starter
 
 ### Installing
 ```sh
